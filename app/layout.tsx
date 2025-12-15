@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import TransitionProvider from "@/components/TransitionProvider";
+import ClientLayout from "./ClientLayout";
 
 export const metadata: Metadata = {
   title: "Teddy",
@@ -9,15 +9,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+
   return (
     <html lang="en">
-      <body>
-        <TransitionProvider>
+      <body className="bg-slate-950 overflow-hidden">
+        <ClientLayout>
           {children}
-        </TransitionProvider>
+        </ClientLayout>
       </body>
     </html>
   );
