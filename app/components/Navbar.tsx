@@ -12,6 +12,7 @@ export default function Navbar() {
             <Link href="#projects" className="mx-3 hover:text-blue-400">Projects</Link>
             <Link href="#skills" className="mx-3 hover:text-blue-400">Skills</Link>
             <Link href="#contact" className="mx-3 hover:text-blue-400">Contact</Link>
+            <Link href="/tictactoe">Tic Tac</Link>
         </div>
     </nav>
     );

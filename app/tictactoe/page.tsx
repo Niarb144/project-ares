@@ -1,0 +1,131 @@
+"use client";
+import { useState, useEffect } from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
+type Player = "X" | "O" | null;
+
+export default function TicTacToe() {
+  const [board, setBoard] = useState<Player[]>(Array(9).fill(null));
+  const [current, setCurrent] = useState<"X" | "O">("X");
+  const [playing, setPlaying] = useState(true);
+  const [scores, setScores] = useState({ X: 0, O: 0 });
+  const [twoPlayer, setTwoPlayer] = useState(true);
+
+  const winningCombos = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8],
+    [0, 3, 6], [1, 4, 7], [2, 5, 8],
+    [0, 4, 8], [2, 4, 6]
+  ];
+
+  const checkWin = () => {
+    for (const combo of winningCombos) {
+      const [a, b, c] = combo;
+      if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+        return { winner: board[a], combo };
+      }
+    }
+    if (board.every(cell => cell !== null)) return { draw: true };
+    return null;
+  };
+
+  const handleClick = (i: number) => {
+    if (!playing || board[i]) return;
+
+    const newBoard = [...board];
+    newBoard[i] = current;
+    setBoard(newBoard);
+
+    const result = checkWin();
+
+    if (result) {
+      setPlaying(false);
+      if ((result as any).winner) {
+        const winner = (result as any).winner as "X" | "O";
+        setScores(prev => ({ ...prev, [winner]: prev[winner] + 1 }));
+      }
+      return;
+    }
+
+    const next = current === "X" ? "O" : "X";
+    setCurrent(next);
+
+    if (!twoPlayer && next === "O") {
+      setTimeout(aiMove, 200);
+    }
+  };
+
+  const aiMove = () => {
+    for (let i = 0; i < 9; i++) {
+      if (!board[i]) {
+        const copy = [...board];
+        copy[i] = "O";
+        if (checkWin()?.winner === "O") return handleClick(i);
+        copy[i] = null;
+      }
+    }
+    for (let i = 0; i < 9; i++) {
+      if (!board[i]) {
+        const copy = [...board];
+        copy[i] = "X";
+        if (checkWin()?.winner === "X") return handleClick(i);
+        copy[i] = null;
+      }
+    }
+    const order = [4, 0, 2, 6, 8, 1, 3, 5, 7];
+    for (const i of order) if (!board[i]) return handleClick(i);
+  };
+
+  const restart = () => {
+    setBoard(Array(9).fill(null));
+    setCurrent("X");
+    setPlaying(true);
+  };
+
+  return (
+    <main>
+        <Navbar />
+        <div className="w-full max-w-md mx-auto md:mt-14 p-6 bg-slate-900 text-slate-100 rounded-2xl shadow-xl border border-slate-800">
+            <div className="flex justify-between items-center mb-4">
+                <h1 className="text-xl font-bold">Tic Tac Toe</h1>
+                <button
+                onClick={() => setTwoPlayer(!twoPlayer)}
+                className="px-3 py-1 rounded bg-slate-700 hover:bg-slate-600"
+                >
+                {twoPlayer ? "2-Player" : "1-Player (AI)"}
+                </button>
+            </div>
+
+            <p className="text-slate-400 mb-3">{playing ? `Player ${current}'s turn` : "Game Over"}</p>
+
+            <div className="grid grid-cols-3 gap-3">
+                {board.map((val, i) => (
+                <button
+                    key={i}
+                    onClick={() => handleClick(i)}
+                    className={`aspect-square rounded-lg flex items-center justify-center text-4xl font-bold shadow bg-slate-800 hover:bg-slate-700 ${
+                    val === "X" ? "text-cyan-300" : val === "O" ? "text-pink-300" : ""
+                    }`}
+                >
+                    {val}
+                </button>
+                ))}
+            </div>
+
+            <div className="flex justify-between items-center mt-6">
+                <button
+                onClick={restart}
+                className="px-4 py-2 bg-cyan-400 text-slate-900 rounded-lg font-semibold hover:bg-cyan-300"
+                >
+                Restart
+                </button>
+                <div className="text-sm text-slate-400">
+                Score — X: <span className="text-cyan-300 font-bold">{scores.X}</span> | O: <span className="text-pink-300 font-bold">{scores.O}</span>
+                </div>
+            </div>
+        </div>
+        <Footer />
+    </main>
+    
+  );
+}
