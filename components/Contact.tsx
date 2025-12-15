@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Contact(){
     return (
-        <section id="contact" className="w-full flex flex-col items-center justify-center px-8 py-12 bg-gray-100">
+        <section id="contact" className="w-full flex flex-col items-center justify-center px-8 py-12 mt-12 bg-gray-100">
             <h2 className="text-4xl font-bold mb-8">Get in Touch</h2>
             <p className="text-lg mb-8 text-center max-w-2xl">I'm always open to discussing new projects, creative ideas,
                  or opportunities to be part of your visions. Feel free to reach out!<Link href="mailto:teddybrian543@gmail.com" className="px-6 py-3 text-blue-500">Contact Me</Link></p>

@@ -112,7 +112,7 @@ useEffect(() => {
             animate={{
               rotate: menuOpen ? 45 : 0,
               y: menuOpen ? 8 : 0,
-              backgroundColor: scrolled ? "#1f2937" : "#ffffff",
+              backgroundColor: scrolled ? "#1f2937" : "#2340e4ff",
             }}
             transition={{ duration: 0.3 }}
             className="block w-full h-[2px] rounded-full"
@@ -120,7 +120,7 @@ useEffect(() => {
           <motion.span
             animate={{
               opacity: menuOpen ? 0 : 1,
-              backgroundColor: scrolled ? "#1f2937" : "#ffffff",
+              backgroundColor: scrolled ? "#1f2937" : "#1e8df5ff",
             }}
             transition={{ duration: 0.2 }}
             className="block w-full h-[2px] rounded-full"
@@ -129,7 +129,7 @@ useEffect(() => {
             animate={{
               rotate: menuOpen ? -45 : 0,
               y: menuOpen ? -8 : 0,
-              backgroundColor: scrolled ? "#1f2937" : "#ffffff",
+              backgroundColor: scrolled ? "#1f2937" : "#2340e4ff",
             }}
             transition={{ duration: 0.3 }}
             className="block w-full h-[2px] rounded-full"
@@ -178,7 +178,7 @@ useEffect(() => {
                   >
                     {link.label}
                     {isActive && (
-                      <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-red-600"></span>
+                      <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-blue-900"></span>
                     )}
                   </Link>
                 </motion.div>
@@ -195,7 +195,7 @@ useEffect(() => {
               <Link
                 href="/tictactoe"
                 onClick={() => setMenuOpen(false)}
-                className="px-5 py-2 bg-blue-400 text-white rounded-full font-semibold hover:bg-red-700 transition-all"
+                className="px-5 py-2 bg-blue-400 text-white rounded-full font-semibold hover:blue-700 transition-all"
               >
                 Xs & Os
               </Link>
