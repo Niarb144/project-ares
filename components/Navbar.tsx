@@ -98,7 +98,7 @@ useEffect(() => {
             href="/tictactoe"
             className="px-4 py-2 bg-blue-400 text-white rounded-full font-semibold hover:bg-red-700 transition-all"
           >
-            Xs & Os
+            Nid Inc
           </Link>
         </div>
 
@@ -197,7 +197,7 @@ useEffect(() => {
                 onClick={() => setMenuOpen(false)}
                 className="px-5 py-2 bg-blue-400 text-white rounded-full font-semibold hover:blue-700 transition-all"
               >
-                Xs & Os
+                Nid Inc
               </Link>
             </div>
             </motion.div>

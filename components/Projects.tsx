@@ -3,8 +3,7 @@ import Link from "next/link";
 
 export default function Projects() {
     return (
-        <section className="w-full py-20 px-8 bg-white" id="projects">
-            <h2 className="text-4xl font-bold mb-8 text-center">My Projects</h2>    
+        <section className="w-full py-20 px-8 bg-white" id="projects"> 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {/* Project Card Example */}
                 <div className="border rounded-lg overflow-hidden shadow-lg">

@@ -13,7 +13,9 @@ export default function HomePage() {
       <main className="">
         <Navbar />
         <Hero />
+        <h2 className="text-4xl font-bold mb-8 text-center">My Projects</h2>   
         <Projects />
+        <h2 className="text-4xl font-bold mb-8">My Skills</h2>
         <Skills />
         <Contact />
         <Footer />
