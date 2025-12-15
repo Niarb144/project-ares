@@ -17,7 +17,7 @@ export default function IntroLoader({ onFinish }: Props) {
     >
       <motion.div
         initial={{ scale: 0.6 }}
-        animate={{ scale: 12 }}
+        animate={{ scale: 10 }}
         transition={{
           duration: 1.2,
           ease: [0.22, 1, 0.36, 1], // smooth "reveal" curve
@@ -26,7 +26,7 @@ export default function IntroLoader({ onFinish }: Props) {
         className="w-20 h-20"
       >
         <Image
-          src="/logo.png"
+          src="/logo.svg"
           alt="Logo"
           width={80}
           height={80}

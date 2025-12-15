@@ -14,7 +14,7 @@ export default function LogoLoader() {
         className="w-20 h-20"
       >
         <Image
-          src="/favicon.png"
+          src="/logo.svg"
           alt="Loading"
           width={80}
           height={80}
