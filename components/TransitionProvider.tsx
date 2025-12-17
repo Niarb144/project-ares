@@ -15,10 +15,13 @@ export default function TransitionProvider({
     <AnimatePresence mode="wait">
       <motion.div
         key={pathname}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
+        initial={{ x: "-100%", opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: "100%", opacity: 0 }}
+        transition={{
+          duration: 0.6,
+          ease: [0.22, 1, 0.36, 1], // smooth, premium easing
+        }}
         className="min-h-screen"
       >
         {children}
