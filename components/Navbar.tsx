@@ -95,7 +95,7 @@ useEffect(() => {
         {/* Right Section (Socials + CTA) */}
         <div className="hidden lg:flex items-center gap-5">
           <Link
-            href="/tictactoe"
+            href="/nidinc"
             className="px-4 py-2 bg-blue-400 text-white rounded-full font-semibold hover:bg-red-700 transition-all"
           >
             Nid Inc
@@ -193,7 +193,7 @@ useEffect(() => {
             >
             <div className="mt-10 flex flex-col items-center gap-6">
               <Link
-                href="/tictactoe"
+                href="/nidinc"
                 onClick={() => setMenuOpen(false)}
                 className="px-5 py-2 bg-blue-400 text-white rounded-full font-semibold hover:blue-700 transition-all"
               >

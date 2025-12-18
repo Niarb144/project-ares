@@ -160,17 +160,18 @@ const hardAIMove = () => {
   return (
     <main>
         <Navbar />
-        <div className="w-full max-w-md mx-auto md:mt-14 p-6 bg-slate-900 text-slate-100 rounded-2xl shadow-xl border border-slate-800">
+        <div className="w-full max-w-md mx-auto md:mt-20 p-6 bg-slate-600 text-slate-100 rounded-xl shadow-xl border border-slate-800">
             <div className="flex justify-between items-center mb-4">
                 <h1 className="text-xl font-bold">Xs & Os</h1>
                 <button
                 onClick={() => setTwoPlayer(!twoPlayer)}
                 className="px-3 py-1 rounded bg-slate-700 hover:bg-slate-600"
                 >
-                {twoPlayer ? "2-Player" : "1-Player (AI)"}
+                {/* {twoPlayer ? "2-Player" : "1-Player (AI)"} */}
+                "Two Player Mode"
                 </button>
 
-                <select
+                {/* <select
                     value={difficulty}
                     onChange={(e) => setDifficulty(e.target.value as Difficulty)}
                     disabled={twoPlayer}
@@ -179,7 +180,7 @@ const hardAIMove = () => {
                     <option value="easy">Easy</option>
                     <option value="medium">Medium</option>
                     <option value="hard">Hard</option>
-                </select>
+                </select> */}
 
             </div>
 
@@ -190,7 +191,7 @@ const hardAIMove = () => {
                 <button
                     key={i}
                     onClick={() => handleClick(i)}
-                    className={`aspect-square rounded-lg flex items-center justify-center text-4xl font-bold shadow bg-slate-800 hover:bg-slate-700 ${
+                    className={`aspect-square rounded-lg flex items-center justify-center text-4xl font-bold shadow bg-slate-800 hover:bg-slate-700 cursor-pointer ${
                     val === "X" ? "text-cyan-300" : val === "O" ? "text-pink-300" : ""
                     }`}
                 >
@@ -202,7 +203,7 @@ const hardAIMove = () => {
             <div className="flex justify-between items-center mt-6">
                 <button
                 onClick={restart}
-                className="px-4 py-2 bg-cyan-400 text-slate-900 rounded-lg font-semibold hover:bg-cyan-300"
+                className="px-4 py-2 bg-cyan-400 text-slate-900 rounded-lg font-semibold hover:bg-cyan-300 cursor-pointer"
                 >
                 Restart
                 </button>
