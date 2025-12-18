@@ -10,31 +10,24 @@ export default function ClientLayout({
   children: React.ReactNode;
 }) {
   const [showIntro, setShowIntro] = useState(() => {
-  if (typeof window === "undefined") return true;
-  return !sessionStorage.getItem("introPlayed");
-});
+    if (typeof window === "undefined") return true;
+    return !sessionStorage.getItem("introPlayed");
+  });
 
-const finishIntro = () => {
-  sessionStorage.setItem("introPlayed", "true");
-  setShowIntro(false);
-};
-
+  const finishIntro = () => {
+    sessionStorage.setItem("introPlayed", "true");
+    setShowIntro(false);
+  };
 
   return (
     <>
-      {showIntro && (
-        <IntroLoader onFinish={() => setShowIntro(false)} />
-      )}
+      {showIntro && <IntroLoader onFinish={finishIntro} />}
 
-      <TransitionProvider>
-        <div
-          className={`transition-opacity duration-700 ${
-            showIntro ? "opacity-0" : "opacity-100"
-          }`}
-        >
+      {!showIntro && (
+        <TransitionProvider>
           {children}
-        </div>
-      </TransitionProvider>
+        </TransitionProvider>
+      )}
     </>
   );
 }
