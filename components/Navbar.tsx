@@ -112,7 +112,7 @@ useEffect(() => {
             animate={{
               rotate: menuOpen ? 45 : 0,
               y: menuOpen ? 8 : 0,
-              backgroundColor: scrolled ? "#1f2937" : "#2340e4ff",
+              backgroundColor: scrolled ? "#1f3eecff" : "#2340e4ff",
             }}
             transition={{ duration: 0.3 }}
             className="block w-full h-[2px] rounded-full"
@@ -120,7 +120,7 @@ useEffect(() => {
           <motion.span
             animate={{
               opacity: menuOpen ? 0 : 1,
-              backgroundColor: scrolled ? "#1f2937" : "#1e8df5ff",
+              backgroundColor: scrolled ? "#071c97ff" : "#1e8df5ff",
             }}
             transition={{ duration: 0.2 }}
             className="block w-full h-[2px] rounded-full"
@@ -129,7 +129,7 @@ useEffect(() => {
             animate={{
               rotate: menuOpen ? -45 : 0,
               y: menuOpen ? -8 : 0,
-              backgroundColor: scrolled ? "#1f2937" : "#2340e4ff",
+              backgroundColor: scrolled ? "#1f3eecff" : "#2340e4ff",
             }}
             transition={{ duration: 0.3 }}
             className="block w-full h-[2px] rounded-full"
