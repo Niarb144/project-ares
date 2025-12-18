@@ -1,36 +1,70 @@
-import React from "react";
-import Link from "next/link";
+"use client";
+
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import ProjectCard from "@/components/ProjectCard";
+import { projects } from "@/data/projects";
 
 export default function Projects() {
-    return (
-        <section className="w-full py-20 px-8 bg-white" id="projects"> 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {/* Project Card Example */}
-                <div className="border rounded-lg overflow-hidden shadow-lg">
-                    <img src="/images/abok.png" alt="Project 1" className="w-full h-48 object-cover"/>
-                    <div className="p-6">
-                        <h3 className="text-2xl font-semibold mb-2">Project One</h3>
-                        <p className="text-gray-700 mb-4">A brief description of Project One highlighting its features and technologies used.</p>
-                        <Link href="https://abokadventures.com" target="_blank" className="text-blue-600 hover:underline">View Project</Link>
-                    </div>
-                </div>
-                <div className="border rounded-lg overflow-hidden shadow-lg">
-                    <img src="/images/epione.png" alt="Project 2" className="w-full h-48 object-cover"/>
-                    <div className="p-6">
-                        <h3 className="text-2xl font-semibold mb-2">Project Two</h3>
-                        <p className="text-gray-700 mb-4">A brief description of Project Two highlighting its features and technologies used.</p>
-                        <Link href="https://epione-health.com" target="_blank" className="text-blue-600 hover:underline">View Project</Link>
-                    </div>
-                </div>
-                <div className="border rounded-lg overflow-hidden shadow-lg">
-                    <img src="/images/imaara-main.png" alt="Project 3" className="w-full h-48 object-cover"/>
-                    <div className="p-6">
-                        <h3 className="text-2xl font-semibold mb-2">Project Three</h3>
-                        <p className="text-gray-700 mb-4">A brief description of Project Three highlighting its features and technologies used.</p>
-                        <Link href="https://theimaara.co.ke" target="_blank" className="text-blue-600 hover:underline">View Project</Link>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+  const [activeFilter, setActiveFilter] = useState<string>("All");
+
+  // Get unique technologies
+  const technologies = [
+    "All",
+    ...Array.from(
+      new Set(projects.flatMap((p) => p.technologies))
+    ),
+  ];
+
+  const filteredProjects =
+    activeFilter === "All"
+      ? projects
+      : projects.filter((project) =>
+          project.technologies.includes(activeFilter)
+        );
+
+  return (
+    <section className="w-full py-24 px-6 bg-slate-950">
+      <div className="max-w-7xl mx-auto">
+
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-white">
+            Selected Projects
+          </h2>
+        </div>
+
+        {/* Filter Pills */}
+        <div className="flex flex-wrap justify-center gap-3 mb-16">
+          {technologies.map((tech) => (
+            <button
+              key={tech}
+              onClick={() => setActiveFilter(tech)}
+              className={`px-4 py-2 rounded-full text-sm font-medium border transition
+                ${
+                  activeFilter === tech
+                    ? "bg-blue-600 text-white border-blue-500"
+                    : "bg-slate-900 text-slate-400 border-slate-800 hover:text-white"
+                }`}
+            >
+              {tech}
+            </button>
+          ))}
+        </div>
+
+        {/* Projects Grid */}
+        <motion.div
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <AnimatePresence>
+            {filteredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+      </div>
+    </section>
+  );
 }
