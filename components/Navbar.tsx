@@ -44,7 +44,7 @@ useEffect(() => {
     <motion.nav
       animate={{
         backgroundColor: scrolled
-          ? "rgba(255,255,255,0.95)"
+          ? "rgba(255,255,255,0.65)"
           : "rgba(255,255,255,0)",
         boxShadow: scrolled
           ? "0 2px 10px rgba(0,0,0,0.1)"
