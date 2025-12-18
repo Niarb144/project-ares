@@ -8,18 +8,15 @@ import { projects } from "@/data/projects";
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState<string>("All");
 
-  // Get unique technologies
   const technologies = [
     "All",
-    ...Array.from(
-      new Set(projects.flatMap((p) => p.technologies))
-    ),
+    ...Array.from(new Set(projects.flatMap(p => p.technologies))),
   ];
 
   const filteredProjects =
     activeFilter === "All"
       ? projects
-      : projects.filter((project) =>
+      : projects.filter(project =>
           project.technologies.includes(activeFilter)
         );
 
@@ -28,14 +25,32 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-white">
             Selected Projects
           </h2>
         </div>
 
-        {/* Filter Pills */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
+        {/* Mobile Dropdown */}
+        <div className="md:hidden mb-10">
+          <label className="block text-sm text-slate-400 mb-2">
+            Filter by technology
+          </label>
+          <select
+            value={activeFilter}
+            onChange={(e) => setActiveFilter(e.target.value)}
+            className="w-full rounded-lg bg-slate-900 border border-slate-800 text-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            {technologies.map((tech) => (
+              <option key={tech} value={tech}>
+                {tech}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Desktop Pills */}
+        <div className="hidden md:flex flex-wrap justify-center gap-3 mb-16">
           {technologies.map((tech) => (
             <button
               key={tech}
