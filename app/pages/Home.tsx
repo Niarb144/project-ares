@@ -14,7 +14,6 @@ export default function HomePage() {
         <Navbar />
         <Hero />  
         <Projects />
-        <h2 className="text-4xl font-bold mb-8">My Skills</h2>
         <Skills />
         <Contact />
         <Footer />

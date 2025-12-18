@@ -28,7 +28,7 @@ export default function ProjectCard({ project }: Props) {
       }}
     >
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-900/40" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-800/20" />
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-end p-6">
