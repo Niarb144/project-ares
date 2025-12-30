@@ -96,7 +96,7 @@ useEffect(() => {
         <div className="hidden lg:flex items-center gap-5">
           <Link
             href="/nidinc"
-            className="px-4 py-2 bg-blue-400 text-white rounded-full font-semibold hover:bg-red-700 transition-all"
+            className="px-4 py-2 bg-blue-600 text-white rounded-full font-semibold hover:bg-red-700 transition-all"
           >
             Nid Inc
           </Link>
@@ -195,7 +195,7 @@ useEffect(() => {
               <Link
                 href="/nidinc"
                 onClick={() => setMenuOpen(false)}
-                className="px-5 py-2 bg-blue-400 text-white rounded-full font-semibold hover:blue-700 transition-all"
+                className="px-5 py-2 bg-blue-600 text-white rounded-full font-semibold hover:blue-700 transition-all"
               >
                 Nid Inc
               </Link>

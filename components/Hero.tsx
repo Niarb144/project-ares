@@ -1,6 +1,9 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
+import { FaGithub, FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Hero() {
   const { scrollY } = useScroll();
@@ -69,18 +72,29 @@ export default function Hero() {
           >
             <a
               href="/contacts"
-              className="px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-500 transition"
+              className="px-6 py-3 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-500 transition"
             >
               Let’s Connect
             </a>
 
             <a
               href="/projects"
-              className="px-6 py-3 rounded-lg border border-slate-600 text-slate-200 font-semibold hover:bg-slate-800 transition"
+              className="px-6 py-3 rounded-full border border-slate-600 text-slate-200 font-semibold hover:bg-slate-800 transition"
             >
               View Projects
             </a>
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.75 }}
+            className="mb-4 mt-10 flex justify-center gap-4" id="socials">
+            <Link href="https://github.com/Niarb144" target="_blank" className="mx-3 text-blue-400 hover:text-blue-400"><FaGithub /></Link>
+            <Link href="https://www.linkedin.com/in/teddy-brian-7a0057228/" target="_blank" className="mx-3 text-blue-400 hover:text-blue-400"><FaLinkedinIn /></Link>
+            <Link href="https://x.com/BrianTeddy7" target="_blank" className="mx-3 text-blue-400 hover:text-blue-400"><FaXTwitter /></Link>
+            <Link href="https://www.instagram.com/pendoria_/" target="_blank" className="mx-3 text-blue-400 hover:text-blue-400"><FaInstagram /></Link>    
+        </motion.div>   
         </div>
       </motion.div>
     </section>
