@@ -32,4 +32,20 @@ export const projects: Project[] = [
     url: "https://theimaara.co.ke",
     technologies: ["HTML", "CSS", "PHP", "SQL", "JavaScript"],
   },
+  {
+    id:"tuffsteel",
+    title: "Tuff Steel",
+    description: "Steel manufacturing company website.",
+    image: "/images/tuffsteel.png",
+    url: "https://tuffsteelproject.vercel.app/",
+    technologies: ["Next.js", "Tailwind CSS", "JavaScript", "Framer Motion", "Vercel"],
+  },
+  {
+    id: "bytespere",
+    title: "Bytespere",
+    description: "IT solutions and services company website.",
+    image: "/images/bytespere.png",
+    url: "https://bytespere.vercel.app/",
+    technologies: ["Next.js", "Tailwind CSS", "JavaScript", "Framer Motion", "Vercel"],
+  },
 ];
