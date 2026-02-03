@@ -19,7 +19,10 @@ export default function HermesPage() {
                     transition={{ duration: 0.6, ease: "easeOut" }}
                     className="mb-8"
                 >
-                <img src="/images/hermes1.png" alt="Hermes Project Screenshot" className="w-full h-auto rounded-lg shadow-lg" />
+                    <a href="https://path-to-hermes.netlify.app/">
+                        <img src="/images/hermes1.png" alt="Hermes Project Screenshot" className="w-auto h-[40dvh] rounded-lg shadow-lg" />
+                    </a>
+                
                 </motion.div>
             </div>
             <Footer />
