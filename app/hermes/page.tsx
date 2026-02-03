@@ -22,6 +22,13 @@ export default function HermesPage() {
                     <a href="https://path-to-hermes.netlify.app/">
                         <img src="/images/hermes1.png" alt="Hermes Project Screenshot" className="w-auto h-[40dvh] rounded-lg shadow-lg" />
                     </a>
+
+                    <div>
+                        <ul className="list-disc list-inside space-y-4 text-lg text-gray-800 mt-6">
+                            <li>Project Hermes is a PC Game </li>
+                            <li>Built using Godot Game Engine</li>
+                        </ul>
+                    </div>
                 
                 </motion.div>
             </div>
