@@ -1,29 +1,126 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
 
-export default function Contact(){
-    return (
-        <section id="contact" className="w-full flex flex-col items-center justify-center px-8 py-12 md:mt-0 bg-gray-100">
-            <h2 className="text-4xl font-bold mb-8">Get in Touch</h2>
-            <p className="text-lg mb-8 text-center max-w-2xl">I'm always open to discussing new projects, creative ideas,
-                 or opportunities to be part of your visions. Feel free to reach out!<Link href="mailto:teddybrian543@gmail.com" className="px-6 py-3 text-blue-500">Contact Me</Link></p>
-            
-            <form className="w-full max-w-lg mt-12">
-                <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">Name</label>
-                    <input className="w-full px-3 py-2 border rounded" type="text" id="name" name="name" placeholder="Your Name"/>
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
-                    <input className="w-full px-3 py-2 border rounded" type="email" id="email" name="email" placeholder="
-                    Your Email"/>
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">Message</label>
-                    <textarea className="w-full px-3 py-2 border rounded" id="message" name="message" rows={5} placeholder="Your Message"></textarea>
-                </div>
-                <button type="submit" className="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Send Message</button>
-            </form>
-        </section>
-    );
+export default function Contact() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setStatus("Message sent successfully!");
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        setStatus(data.error || "Something went wrong");
+      }
+    } catch (err) {
+      setStatus("Failed to send message");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <section
+      id="contact"
+      className="w-full flex flex-col items-center justify-center px-8 py-12 md:mt-0 bg-gray-100"
+    >
+      <h2 className="text-4xl font-bold mb-8">Get in Touch</h2>
+
+      <p className="text-lg mb-8 text-center max-w-2xl">
+        I'm always open to discussing new projects, creative ideas, or
+        opportunities to be part of your visions.
+        <Link
+          href="mailto:teddybrian543@gmail.com"
+          className="px-2 text-blue-500"
+        >
+          Contact Me
+        </Link>
+      </p>
+
+      <form onSubmit={handleSubmit} className="w-full max-w-lg mt-12">
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Name
+          </label>
+          <input
+            className="w-full px-3 py-2 border rounded"
+            type="text"
+            name="name"
+            value={form.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Email
+          </label>
+          <input
+            className="w-full px-3 py-2 border rounded"
+            type="email"
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Message
+          </label>
+          <textarea
+            className="w-full px-3 py-2 border rounded"
+            name="message"
+            rows={5}
+            value={form.message}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition disabled:opacity-50"
+        >
+          {loading ? "Sending..." : "Send Message"}
+        </button>
+
+        {status && (
+          <p className="mt-4 text-center text-sm text-gray-700">{status}</p>
+        )}
+      </form>
+    </section>
+  );
 }
