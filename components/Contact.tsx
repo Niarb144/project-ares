@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -12,6 +13,7 @@ export default function Contact() {
 
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -30,7 +32,10 @@ export default function Contact() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+        ...form,
+        captchaToken,
+        }),
       });
 
       const data = await res.json();
@@ -108,6 +113,11 @@ export default function Contact() {
             required
           />
         </div>
+
+        <ReCAPTCHA
+        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+        onChange={(token) => setCaptchaToken(token)}
+        />
 
         <button
           type="submit"
