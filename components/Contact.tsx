@@ -115,14 +115,14 @@ export default function Contact() {
         </div>
 
         <ReCAPTCHA
-        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+        sitekey={process.env.FRONTEND_RECAPTCHA_SITE_KEY!}
         onChange={(token) => setCaptchaToken(token)}
         />
 
         <button
           type="submit"
           disabled={loading}
-          className="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition disabled:opacity-50"
+          className="mt-4 px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition disabled:opacity-50"
         >
           {loading ? "Sending..." : "Send Message"}
         </button>
