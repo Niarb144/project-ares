@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+// @ts-ignore: side-effect import for global CSS
 import "./globals.css";
 import ClientLayout from "./ClientLayout";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Teddy",
@@ -17,7 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ClientLayout>
+          <Navbar />
           {children}
+          <Footer />
         </ClientLayout>
       </body>
     </html>

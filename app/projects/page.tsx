@@ -1,45 +1,54 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useMemo, useState } from "react";
+
+import { projects } from "@/data/projects";
 import Navbar from "@/components/Navbar";
-import Projects from "@/components/Projects";
-import Footer from "@/components/Footer";
+import Hero from "@/components/projects/Hero";
+import ProjectStats from "@/components/projects/ProjectStats";
+import TechnologyFilters from "@/components/projects/TechnologyFilters";
+import FeaturedProject from "@/components/projects/FeaturedProject";
+import BentoGrid from "@/components/projects/BentoGrid";
+import EngineeringProcess from "@/components/projects/EngineeringProcess";
+import ProjectTimeline from "@/components/projects/ProjectTimeline";
+import ProjectCTA from "@/components/projects/ProjectCTA";
 
 export default function ProjectsPage() {
-  const ref = useRef<HTMLDivElement>(null);
+  const [activeFilter, setActiveFilter] = useState("All");
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
+  const featured = projects.find((p) => p.featured) ?? projects[0];
 
-  // Move background vertically for parallax
-  const y = useTransform(scrollYProgress, [0, 1], ["-60%", "60%"]);
+  const rest = useMemo(
+    () => projects.filter((p) => p.id !== featured?.id),
+    [featured?.id]
+  );
+
+  const filteredRest = useMemo(() => {
+    if (activeFilter === "All") return rest;
+    return rest.filter((p) => p.technologies.includes(activeFilter));
+  }, [rest, activeFilter]);
 
   return (
-    <main className="min-h-screen">
-        <Navbar />
-        <section
-            ref={ref}
-            className="relative h-[40vh] overflow-hidden flex items-center justify-center"
-            >
-            {/* Background */}
-            <motion.div
-                style={{ y }}
-                className="absolute inset-0 bg-[url('/images/projects-bg.jpg')] bg-cover bg-center"
-            />
+    <main className="bg-slate-950">
+      <Hero />
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/50" />
+      <ProjectStats projects={projects} yearsExperience={3} />
 
-            {/* Content */}
-            <h1 className="relative text-5xl font-bold text-white text-center">
-                My <span className="text-primary">Projects</span>
-            </h1>
-        </section>
-        <Projects />
-        <Footer />
+      <TechnologyFilters
+        projects={rest}
+        active={activeFilter}
+        onChange={setActiveFilter}
+      />
+
+      {featured && <FeaturedProject project={featured} />}
+
+      <BentoGrid projects={filteredRest} />
+
+      <EngineeringProcess />
+
+      <ProjectTimeline projects={projects} />
+
+      <ProjectCTA />
     </main>
   );
 }

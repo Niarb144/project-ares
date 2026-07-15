@@ -5,7 +5,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <footer className="absolute b-0 w-full flex flex-col items-center justify-center px-8 py-6 bg-blue-400 text-white mt-12"> 
+    <footer className="absolute b-0 w-full flex flex-col items-center justify-center px-8 py-6 bg-blue-400 text-white mt-0"> 
         <div className="mb-4 flex justify-center gap-4" id="socials">
             <Link href="https://github.com/Niarb144" target="_blank" className="mx-3 hover:text-blue-400"><FaGithub /></Link>
             <Link href="https://www.linkedin.com/in/teddy-brian-7a0057228/" target="_blank" className="mx-3 hover:text-blue-400"><FaLinkedinIn /></Link>
