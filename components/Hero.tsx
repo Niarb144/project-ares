@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { FaGithub, FaLinkedinIn, FaInstagram } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { IoDocumentTextOutline } from "react-icons/io5";
 
 export default function Hero() {
   const { scrollY } = useScroll();
@@ -92,8 +92,7 @@ export default function Hero() {
             className="mb-4 mt-10 flex justify-center gap-4" id="socials">
             <Link href="https://github.com/Niarb144" target="_blank" className="mx-3 text-blue-400 hover:text-blue-400"><FaGithub /></Link>
             <Link href="https://www.linkedin.com/in/teddy-brian-7a0057228/" target="_blank" className="mx-3 text-blue-400 hover:text-blue-400"><FaLinkedinIn /></Link>
-            <Link href="https://x.com/BrianTeddy7" target="_blank" className="mx-3 text-blue-400 hover:text-blue-400"><FaXTwitter /></Link>
-            <Link href="https://www.instagram.com/pendoria_/" target="_blank" className="mx-3 text-blue-400 hover:text-blue-400"><FaInstagram /></Link>    
+            <Link href="/docs/Brian Teddy Omondi Resume 2026.pdf" target="_blank" className="mx-3 text-blue-400 hover:text-blue-400"><IoDocumentTextOutline /></Link>
         </motion.div>   
         </div>
       </motion.div>

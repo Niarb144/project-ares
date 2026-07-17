@@ -46,10 +46,10 @@ export const projects: Project[] = [
     title: "Luxe Plains Africa Safaris",
 
     tagline:
-      "Luxury safari booking platform",
+      "Discover Your Dream Safari",
 
     description:
-      "A multilingual safari booking experience designed for international travellers.",
+      "A multilingual safari booking experience designed for international travellers. With a focus on user experience, the platform allows users to explore and book safari packages seamlessly. As well as allow authenticated users to manage their bookings and inquiries.",
 
     featured: true,
 
@@ -130,12 +130,12 @@ export const projects: Project[] = [
     title: "Abok Adventures",
 
     tagline:
-      "Safari and adventure booking platform",
+      "Travel to different corners of the African landscape, without going around in circles.",
 
     description:
-      "A multilingual safari booking experience designed for international travellers.",
+      "A multilingual safari booking experience designed for international travellers. With a focus on user experience, the platform allows users to explore and book safari packages seamlessly. As well as allow authenticated users to manage their bookings and inquiries.",
 
-    featured: true,
+    featured: false,
 
     category: "Commercial",
 
@@ -165,6 +165,8 @@ export const projects: Project[] = [
       "TypeScript",
       "Framer Motion",
       "Express.js",
+      "Cloudinary",
+      "JWT Authentication",
     ],
 
     problem:
@@ -216,10 +218,10 @@ export const projects: Project[] = [
     title: "The Imaara Mall",
 
     tagline:
-      "A mall website showcasing various stores and services",
+      "Explore a world of endless possibilities at The Imaara Mall, where innovation meets convenience.",
 
     description:
-      "A multilingual mall website showcasing various stores and services",
+      "A mall website designed to showcase various stores and services, allowing users to explore and learn more about the offerings. The platform also provides a content management system for easy updates and management of the mall's content.",
 
     featured: false,
 

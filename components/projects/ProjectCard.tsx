@@ -45,7 +45,7 @@ export default function ProjectCard({ project }: Props) {
         <div className="absolute top-4 right-4">
           <span className="flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/15 px-3 py-1 text-xs font-medium text-emerald-300 backdrop-blur">
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-            Live
+            {project.status}
           </span>
         </div>
       </div>
