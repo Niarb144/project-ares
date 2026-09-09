@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import { FaGithub, FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { IoDocumentTextOutline } from "react-icons/io5";
 
 export default function Hero() {
@@ -11,21 +11,24 @@ export default function Hero() {
   // Parallax values
   const bgY = useTransform(scrollY, [0, 500], [0, 120]);
   const contentY = useTransform(scrollY, [0, 500], [0, -40]);
-  const glowOpacity = useTransform(scrollY, [0, 300], [0.25, 0]);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-slate-950">
-      
+    <section className="relative min-h-screen overflow-hidden bg-white">
+
       {/* Parallax background */}
       <motion.div
         style={{ y: bgY }}
-        className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-950 to-black"
+        className="absolute inset-0 bg-gradient-to-b from-neutral-50 via-white to-white"
       />
 
-      {/* Soft glow */}
-      <motion.div
-        style={{ opacity: glowOpacity }}
-        className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.18),transparent_60%)]"
+      {/* Subtle grid texture instead of the blue glow */}
+      <div
+        className="absolute inset-0 opacity-[0.4]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+        }}
       />
 
       {/* Content */}
@@ -33,23 +36,23 @@ export default function Hero() {
         style={{ y: contentY }}
         className="relative z-10 min-h-screen flex items-center justify-center px-6"
       >
-        <div className="max-w-3xl text-center">
+        <div className="max-w-4xl text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-sm uppercase tracking-widest text-slate-400 mb-4"
+            className="text-sm uppercase tracking-widest text-neutral-500 mb-4"
           >
-            Hi, I’m <span className="text-white">Teddy</span>
+            Hi, I’m <span className="text-neutral-900 font-medium">Teddy</span>
           </motion.p>
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-4xl md:text-6xl font-bold text-white"
+            className="text-6xl md:text-8xl font-bold text-neutral-900 leading-[1.05] tracking-tight"
           >
-            I build <span className="text-blue-500">elegant</span> web
+            I build <span className="text-blue-600">elegant</span> web
             <br />
             experiences
           </motion.h1>
@@ -58,7 +61,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35 }}
-            className="mt-6 text-slate-300 text-lg"
+            className="mt-8 text-neutral-600 text-lg md:text-xl max-w-2xl mx-auto"
           >
             A fullstack developer passionate about clean design,
             smooth animations, and modern web technologies.
@@ -72,14 +75,14 @@ export default function Hero() {
           >
             <a
               href="/contacts"
-              className="px-6 py-3 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-500 transition"
+              className="px-6 py-3 rounded-full bg-neutral-900 text-white font-semibold hover:bg-neutral-700 transition-colors"
             >
               Let’s Connect
             </a>
 
             <a
               href="/projects"
-              className="px-6 py-3 rounded-full border border-slate-600 text-slate-200 font-semibold hover:bg-slate-800 transition"
+              className="px-6 py-3 rounded-full border border-neutral-300 text-neutral-800 font-semibold hover:border-neutral-900 hover:bg-neutral-50 transition-colors"
             >
               View Projects
             </a>
@@ -89,11 +92,31 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.75 }}
-            className="mb-4 mt-10 flex justify-center gap-4" id="socials">
-            <Link href="https://github.com/Niarb144" target="_blank" className="mx-3 text-blue-400 hover:text-blue-400"><FaGithub /></Link>
-            <Link href="https://www.linkedin.com/in/teddy-brian-7a0057228/" target="_blank" className="mx-3 text-blue-400 hover:text-blue-400"><FaLinkedinIn /></Link>
-            <Link href="/docs/Brian Teddy Omondi Resume 2026.pdf" target="_blank" className="mx-3 text-blue-400 hover:text-blue-400"><IoDocumentTextOutline /></Link>
-        </motion.div>   
+            className="mb-4 mt-10 flex justify-center gap-6"
+            id="socials"
+          >
+            <Link
+              href="https://github.com/Niarb144"
+              target="_blank"
+              className="text-neutral-500 hover:text-neutral-900 transition-colors text-lg"
+            >
+              <FaGithub />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/teddy-brian-7a0057228/"
+              target="_blank"
+              className="text-neutral-500 hover:text-neutral-900 transition-colors text-lg"
+            >
+              <FaLinkedinIn />
+            </Link>
+            <Link
+              href="/docs/Brian Teddy Omondi Resume 2026.pdf"
+              target="_blank"
+              className="text-neutral-500 hover:text-neutral-900 transition-colors text-lg"
+            >
+              <IoDocumentTextOutline />
+            </Link>
+          </motion.div>
         </div>
       </motion.div>
     </section>

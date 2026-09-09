@@ -6,7 +6,6 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowUpRight,
-  ChevronDown,
   Globe,
   Layers3,
 } from "lucide-react";
@@ -28,9 +27,9 @@ export default function ProjectCard({ project }: Props) {
       layout
       whileHover={{ y: -8 }}
       transition={{ duration: 0.35 }}
-      className="group overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/70 backdrop-blur-xl"
+      className="group overflow-hidden border border-slate-800 bg-slate-900/70 backdrop-blur-xl"
     >
-      {/* IMAGE */}
+      {/* IMAGE — always visible */}
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
           src={project.image}
@@ -41,7 +40,7 @@ export default function ProjectCard({ project }: Props) {
 
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
 
-        {/* Live Badge */}
+        {/* Status badge — always visible */}
         <div className="absolute top-4 right-4">
           <span className="flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/15 px-3 py-1 text-xs font-medium text-emerald-300 backdrop-blur">
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -50,57 +49,32 @@ export default function ProjectCard({ project }: Props) {
         </div>
       </div>
 
-      {/* CONTENT */}
-      <div className="space-y-5 p-6">
+      {/* SLIDE-DOWN CONTENT — hidden until hover */}
+      <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-out group-hover:grid-rows-[1fr]">
+        <div className="overflow-hidden">
+          <div className="space-y-5 p-6">
 
-        {/* Category */}
-        <div className="flex items-center gap-2 text-sm text-blue-400">
-          <Layers3 size={16} />
-          {project.category} Project
-        </div>
+            {/* Category */}
+            <div className="flex items-center gap-2 text-sm text-blue-400">
+              <Layers3 size={16} />
+              {project.category} Project
+            </div>
 
-        {/* Title */}
-        <div>
-          <h3 className="text-2xl font-bold text-white">
-            {project.title}
-          </h3>
+            {/* Title */}
+            <div>
+              <h3 className="text-2xl font-bold text-white">
+                {project.title}
+              </h3>
 
-          <p className="mt-3 text-sm leading-7 text-slate-400">
-            {project.description}
-          </p>
-        </div>
+              <p className="mt-3 text-sm leading-7 text-slate-400">
+                {project.description}
+              </p>
+            </div>
 
-        {/* Tech */}
-        <div>
-          <div className="flex flex-wrap gap-2">
-            {visibleTech.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-full border border-slate-700 bg-slate-800/60 px-3 py-1 text-xs text-slate-300"
-              >
-                {tech}
-              </span>
-            ))}
-
-            {hiddenTech.length > 0 && (
-              <button
-                onClick={() => setExpanded(!expanded)}
-                className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-xs text-slate-300 transition hover:border-blue-500 hover:text-white"
-              >
-                +{hiddenTech.length}
-              </button>
-            )}
-          </div>
-
-          <AnimatePresence>
-            {expanded && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                className="mt-3 flex flex-wrap gap-2"
-              >
-                {hiddenTech.map((tech) => (
+            {/* Tech */}
+            <div>
+              <div className="flex flex-wrap gap-2">
+                {visibleTech.map((tech) => (
                   <span
                     key={tech}
                     className="rounded-full border border-slate-700 bg-slate-800/60 px-3 py-1 text-xs text-slate-300"
@@ -108,34 +82,63 @@ export default function ProjectCard({ project }: Props) {
                     {tech}
                   </span>
                 ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
 
-        {/* Divider */}
-        <div className="border-t border-slate-800" />
+                {hiddenTech.length > 0 && (
+                  <button
+                    onClick={() => setExpanded(!expanded)}
+                    className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-xs text-slate-300 transition hover:border-blue-500 hover:text-white"
+                  >
+                    +{hiddenTech.length}
+                  </button>
+                )}
+              </div>
 
-        {/* Footer */}
-        <div className="flex items-center justify-between">
+              <AnimatePresence>
+                {expanded && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="mt-3 flex flex-wrap gap-2"
+                  >
+                    {hiddenTech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-full border border-slate-700 bg-slate-800/60 px-3 py-1 text-xs text-slate-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
-          <div className="flex items-center gap-2 text-slate-500">
-            <Globe size={16} />
-            <span className="text-sm">Production Website</span>
+            {/* Divider */}
+            <div className="border-t border-slate-800" />
+
+            {/* Footer */}
+            <div className="flex items-center justify-between">
+
+              <div className="flex items-center gap-2 text-slate-500">
+                <Globe size={16} />
+                <span className="text-sm">Production Website</span>
+              </div>
+
+              <Link
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/30"
+              >
+                View Project
+                <ArrowUpRight size={16} />
+              </Link>
+
+            </div>
+
           </div>
-
-          <Link
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/30"
-          >
-            View Project
-            
-          </Link>
-
         </div>
-
       </div>
     </motion.article>
   );
