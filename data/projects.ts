@@ -233,7 +233,7 @@ export const projects: Project[] = [
 
     role: "Full Stack Developer",
 
-    image: "/images/imaara-main.png",
+    image: "/images/imaara-construction.png",
 
     gallery: [
       "/images/abok-home.png",
@@ -289,6 +289,72 @@ export const projects: Project[] = [
 
     color:"#3B82F6"
   },
+  {
+    id: "level-designer",
+
+    title: "Level Designer",
+
+    tagline:
+      "Design 2D levels for immersive game experiences.",
+
+    description:
+      "A level designer for creating engaging 2D game levels. The platform allows users to design, test, and export levels for use in various game engines. It provides a user-friendly interface with tools for placing objects, defining player paths, and setting up game mechanics.",
+
+    featured: false,
+
+    category: "Open Source",
+
+    status: "Live",
+
+    year: 2026,
+
+    role: "Full Stack Developer",
+
+    image: "/images/level-designer.png",
+
+    gallery: [
+      "/images/level-designer.png",
+    ],
+
+    liveUrl:
+      "https://level-designer-jade.vercel.app/",
+
+    githubUrl:"",
+
+    technologies:[
+      "Javascript",
+      "HTML",
+      "CSS",
+      "Canvas API",
+    ],
+
+    problem:
+      "Game developers needed a tool to easily design, visualize and test their 2D game levels without relying on complex game engines.",
+
+    solution:
+      "Designed and developed a level designer with a user-friendly interface, allowing users to create, test, and export 2D game levels efficiently.",
+
+    impact:[
+      "Exports the levels in JSON format for easy integration with game engines",
+      "Supports various game mechanics and object placements",
+      "User-friendly interface for level design"
+    ],
+
+    metrics:[
+      
+      {
+        label:"Performance",
+        value:"98"
+      },
+    ],
+
+    architecture:[
+      "Javascript",
+      "Vercel"
+    ],
+
+    color:"#3B82F6"
+  },
   // // {
   // //   id: "imaara",
   // //   title: "Imaara Mall",
@@ -305,12 +371,12 @@ export const projects: Project[] = [
   //   url: "https://tuffsteelproject.vercel.app/",
   //   technologies: ["Next.js", "Tailwind CSS", "JavaScript", "Framer Motion", "Vercel"],
   // },
-  // // {
-  // //   id: "bytespere",
-  // //   title: "Bytespere",
-  // //   description: "IT solutions and services company website.",
-  // //   image: "/images/bytespere.png",
-  // //   url: "https://bytespere.vercel.app/",
-  // //   technologies: ["Next.js", "Tailwind CSS", "JavaScript", "Framer Motion", "Vercel"],
-  // // },
+  // {
+  //   id: "bytespere",
+  //   title: "Bytespere",
+  //   description: "IT solutions and services company website.",
+  //   image: "/images/bytespere.png",
+  //   url: "https://bytespere.vercel.app/",
+  //   technologies: ["Next.js", "Tailwind CSS", "JavaScript", "Framer Motion", "Vercel"],
+  // },
 ];
