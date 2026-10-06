@@ -107,8 +107,7 @@ export default function Hero() {
               </div> */}
 
               <p className="font-mono max-w-md text-sm leading-relaxed text-white/75 md:text-base">
-                I’m a fullstack developer passionate about clean design,
-                smooth animations, and modern web technologies. I create
+                Creating
                 thoughtful digital experiences that balance usability,
                 performance, and visual detail.
               </p>
