@@ -115,7 +115,7 @@ export default function Hero() {
               {/* CTAs */}
               <div className="mt-7 flex flex-wrap gap-3">
                 <Link
-                  href="/contacts"
+                  href="#contact"
                   className="
                     font-mono
                     group
@@ -156,7 +156,7 @@ export default function Hero() {
                 </Link>
 
                 <Link
-                  href="/projects"
+                  href="#projects"
                   className="
                     font-mono
                     inline-flex
