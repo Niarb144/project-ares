@@ -11,12 +11,12 @@ export default function HomePage() {
   return (
     <div className="">
       <main className="">
-        <Navbar />
+        
         <Hero />  
         <Projects />
         <Skills />
         <Contact />
-        <Footer />
+        
       </main>
     </div>
   );

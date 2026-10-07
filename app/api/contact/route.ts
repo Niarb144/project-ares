@@ -51,8 +51,6 @@ export async function POST(req: Request) {
       },
     });
 
-    console.log("EMAIL:", process.env.EMAIL_USER);
-
     // Email content
     await transporter.sendMail({
       from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
@@ -69,11 +67,22 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json(
-      { error: "Failed to send email" },
-      { status: 500 }
-    );
-  }
+  }catch (error) {
+  console.error("CONTACT API ERROR:", error);
+
+  return NextResponse.json(
+    {
+      error:
+        error instanceof Error
+          ? error.message
+          : "Failed to send email",
+    },
+    { status: 500 }
+  );
+}
+    // return NextResponse.json(
+    //   { error: "Failed to send email" },
+    //   { status: 500 }
+    // );
+
 }
