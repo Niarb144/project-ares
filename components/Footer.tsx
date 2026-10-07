@@ -13,7 +13,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   const links = [
-    { href: "#home", label: "Home" },
+    { href: "/", label: "Home" },
     { href: "#projects", label: "Projects" },
     { href: "#skills", label: "Skills" },
     { href: "#contact", label: "Contact" },

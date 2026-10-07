@@ -464,6 +464,7 @@ export default function Contact() {
                   transition-all
                   duration-300
                   hover:bg-blue-600
+                  cursor-pointer
                   disabled:cursor-not-allowed
                   disabled:opacity-40
                 "

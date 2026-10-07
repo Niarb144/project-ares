@@ -21,7 +21,7 @@ export default function Projects() {
         );
 
   return (
-    <section className="w-full bg-[#f7f7f5] px-5 py-20 md:px-8 lg:px-10 lg:py-24">
+    <section className="w-full bg-[#f7f7f5] px-5 py-20 md:px-8 lg:px-10 lg:py-24" id="projects">
       <div className="mx-auto max-w-[1500px]">
         {/* =========================
             TOP FILTER BAR

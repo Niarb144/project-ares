@@ -12,7 +12,7 @@ export default function Hero() {
   const contentY = useTransform(scrollY, [0, 700], [0, -40]);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#0a0a0a] text-[#f2f0e8]">
+    <section className="relative min-h-screen overflow-hidden bg-[#0a0a0a] text-[#f2f0e8]" id="home">
       {/* Background image */}
       <motion.div
         style={{ y: bgY }}

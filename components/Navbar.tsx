@@ -20,9 +20,9 @@ export default function Navbar() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/projects", label: "Projects" },
-    { href: "/skills", label: "Skills" },
-    { href: "/contacts", label: "Contact" },
+    { href: "#projects", label: "Projects" },
+    { href: "#skills", label: "Skills" },
+    { href: "#contacts", label: "Contact" },
   ];
 
   /* ----------------------------------
@@ -450,6 +450,7 @@ export default function Navbar() {
 
                 <Link
                   href="/nidinc"
+                  target="_blank"
                   onClick={() => setMenuOpen(false)}
                   className="
                     group
@@ -471,7 +472,7 @@ export default function Navbar() {
                 >
                   Nid Inc
 
-                  <span className="transition-transform duration-300 group-hover:translate-x-1">
+                  <span className="bg-white rounded-full transition-transform duration-300 group-hover:translate-x-1">
                     →
                   </span>
                 </Link>
