@@ -1,13 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowUpRight,
-  Globe,
   Layers3,
+  CircleDot,
 } from "lucide-react";
 
 import { Project } from "@/data/projects";
@@ -17,129 +16,193 @@ type Props = {
 };
 
 export default function ProjectCard({ project }: Props) {
-  const [expanded, setExpanded] = useState(false);
-
-  const visibleTech = project.technologies.slice(0, 3);
-  const hiddenTech = project.technologies.slice(3);
-
   return (
-    <motion.article
-      layout
-      whileHover={{ y: -8 }}
-      transition={{ duration: 0.35 }}
-      className="group overflow-hidden border border-slate-800 bg-slate-900/70 backdrop-blur-xl"
+    <motion.div
+      whileHover={{ y: -6 }}
+      transition={{
+        duration: 0.3,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="group h-full"
     >
-      {/* IMAGE — always visible */}
-      <div className="relative aspect-[16/10] overflow-hidden">
-        <Image
-          src={project.image}
-          alt={project.title}
-          fill
-          className="object-cover transition duration-700 group-hover:scale-105"
-        />
+      <Link
+        href={project.liveUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="
+          flex
+          h-full
+          flex-col
+          overflow-hidden
+          rounded-[24px]
+          border
+          border-neutral-200
+          bg-white
+          transition-all
+          duration-300
+          hover:shadow-[0_20px_60px_rgba(0,0,0,0.10)]
+        "
+      >
+        {/* =========================
+            IMAGE
+        ========================== */}
+        <div className="relative aspect-[16/9] overflow-hidden">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="
+              object-cover
+              transition-transform
+              duration-700
+              ease-out
+              group-hover:scale-[1.04]
+            "
+          />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
+          {/* Soft image overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/5" />
 
-        {/* Status badge — always visible */}
-        <div className="absolute top-4 right-4">
-          <span className="flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/15 px-3 py-1 text-xs font-medium text-emerald-300 backdrop-blur">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-            {project.status}
-          </span>
-        </div>
-      </div>
-
-      {/* SLIDE-DOWN CONTENT — hidden until hover */}
-      <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-out group-hover:grid-rows-[1fr]">
-        <div className="overflow-hidden">
-          <div className="space-y-5 p-6">
-
-            {/* Category */}
-            <div className="flex items-center gap-2 text-sm text-blue-400">
-              <Layers3 size={16} />
-              {project.category} Project
+          {/* Category pill */}
+          <div className="absolute left-4 top-4">
+            <div
+              className="
+                flex
+                items-center
+                gap-2
+                rounded-full
+                bg-white/90
+                px-3
+                py-1.5
+                text-[11px]
+                font-medium
+                text-neutral-800
+                shadow-sm
+                backdrop-blur-md
+              "
+            >
+              <Layers3 size={13} />
+              <span>{project.category}</span>
             </div>
+          </div>
 
-            {/* Title */}
-            <div>
-              <h3 className="text-2xl font-bold text-white">
-                {project.title}
-              </h3>
-
-              <p className="mt-3 text-sm leading-7 text-slate-400">
-                {project.description}
-              </p>
-            </div>
-
-            {/* Tech */}
-            <div>
-              <div className="flex flex-wrap gap-2">
-                {visibleTech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full border border-slate-700 bg-slate-800/60 px-3 py-1 text-xs text-slate-300"
-                  >
-                    {tech}
-                  </span>
-                ))}
-
-                {hiddenTech.length > 0 && (
-                  <button
-                    onClick={() => setExpanded(!expanded)}
-                    className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-xs text-slate-300 transition hover:border-blue-500 hover:text-white"
-                  >
-                    +{hiddenTech.length}
-                  </button>
-                )}
-              </div>
-
-              <AnimatePresence>
-                {expanded && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="mt-3 flex flex-wrap gap-2"
-                  >
-                    {hiddenTech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded-full border border-slate-700 bg-slate-800/60 px-3 py-1 text-xs text-slate-300"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* Divider */}
-            <div className="border-t border-slate-800" />
-
-            {/* Footer */}
-            <div className="flex items-center justify-between">
-
-              <div className="flex items-center gap-2 text-slate-500">
-                <Globe size={16} />
-                <span className="text-sm">Production Website</span>
-              </div>
-
-              <Link
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/30"
-              >
-                View Project
-                <ArrowUpRight size={16} />
-              </Link>
-
-            </div>
-
+          {/* Arrow */}
+          <div
+            className="
+              absolute
+              right-4
+              top-4
+              flex
+              h-10
+              w-10
+              items-center
+              justify-center
+              rounded-full
+              bg-white
+              text-neutral-900
+              shadow-sm
+              transition-all
+              duration-300
+              group-hover:rotate-45
+              group-hover:bg-blue-600
+              group-hover:text-white
+            "
+          >
+            <ArrowUpRight size={18} />
           </div>
         </div>
-      </div>
-    </motion.article>
+
+        {/* =========================
+            CONTENT
+        ========================== */}
+        <div className="flex flex-1 flex-col p-5 md:p-6">
+          <div>
+            <h3
+              className="
+                text-xl
+                font-semibold
+                tracking-[-0.025em]
+                text-neutral-950
+                transition-colors
+                duration-300
+                group-hover:text-blue-600
+                md:text-2xl
+              "
+            >
+              {project.title}
+            </h3>
+
+            <p
+              className="
+                mt-2
+                line-clamp-2
+                text-sm
+                leading-6
+                text-neutral-500
+              "
+            >
+              {project.description}
+            </p>
+          </div>
+
+          {/* =========================
+              FOOTER
+          ========================== */}
+          <div
+            className="
+              mt-auto
+              flex
+              items-center
+              justify-between
+              gap-4
+              pt-6
+            "
+          >
+            {/* Status */}
+            <div className="flex items-center gap-2">
+              <div
+                className={`
+                  flex
+                  h-8
+                  w-8
+                  items-center
+                  justify-center
+                  rounded-full
+
+                  ${
+                    project.status === "Live"
+                      ? "bg-emerald-50 text-emerald-600"
+                      : "bg-blue-50 text-blue-600"
+                  }
+                `}
+              >
+                <CircleDot size={15} />
+              </div>
+
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.12em] text-neutral-400">
+                  Status
+                </p>
+
+                <p className="text-xs font-medium text-neutral-800">
+                  {project.status}
+                </p>
+              </div>
+            </div>
+
+            {/* Category */}
+            <div className="text-right">
+              <p className="text-[10px] uppercase tracking-[0.12em] text-neutral-400">
+                Category
+              </p>
+
+              <p className="text-xs font-medium text-neutral-800">
+                {project.category}
+              </p>
+            </div>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
   );
 }
