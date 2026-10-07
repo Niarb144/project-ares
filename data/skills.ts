@@ -57,6 +57,16 @@ export const skillCategories: SkillCategory[] = [
         name: "Tailwind CSS",
         image: "/images/tailwindcss.png",
       },
+      {
+        id: "framer",
+        name: "Framer Motion",
+        image: "/images/framer-motion.png",
+      },
+      {
+        id: "gsap",
+        name: "GSAP",
+        image: "/images/gsap.png",
+      }
     ],
   },
 
@@ -71,6 +81,11 @@ export const skillCategories: SkillCategory[] = [
         name: "Node.js",
         image: "/images/nodejs.png",
       },
+      {
+        id: "express",
+        name: "Express.js",
+        image: "/images/express.png",
+      }
     ],
   },
 
@@ -85,6 +100,64 @@ export const skillCategories: SkillCategory[] = [
         name: "Git",
         image: "/images/git.png",
       },
+      {
+        id: "vercel",
+        name: "Vercel",
+        image: "/images/vercel.png",
+      },
+      {
+        id: "resend",
+        name: "Resend",
+        image: "/images/resend.png",
+      },
+      {
+        id: "cloudinary",
+        name: "Cloudinary",
+        image: "/images/cloudinary.png",
+      }
     ],
+  },
+
+  {
+    id: "databases",
+    title: "Databases",
+    description:
+      "Data storage solutions, querying and database design.",
+    skills: [
+      {
+        id: "mongodb",
+        name: "MongoDB",
+        image: "/images/mongodb.png",
+      },
+      {
+        id: "postgresql",
+        name: "PostgreSQL",
+        image: "/images/postgresql.png",
+      },
+      {
+        id: "supabase",
+        name: "Supabase",
+        image: "/images/supabase.png",
+      },
+    ],
+  },
+
+  {
+    id: "others",
+    title: "Other Technologies",
+    description:
+      "The tools that I use for my projects outside web applications and databases.",
+    skills: [
+      {
+        id: "blender",
+        name: "Blender",
+        image: "/images/blender.png",
+      },
+      {
+        id: "Godot",
+        name: "Godot",
+        image: "/images/godot.png",
+      }
+    ]
   },
 ];
