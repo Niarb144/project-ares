@@ -14,6 +14,8 @@ export default function Footer() {
 
   const links = [
     { href: "/", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#services", label: "Services" },
     { href: "#projects", label: "Projects" },
     { href: "#skills", label: "Skills" },
     { href: "#contact", label: "Contact" },
@@ -107,7 +109,7 @@ export default function Footer() {
               </Link>
 
               <Link
-                href="https://www.linkedin.com/in/teddy-brian-7a0057228/"
+                href="https://www.linkedin.com/in/brian-teddy-omondi/"
                 target="_blank"
                 aria-label="LinkedIn"
                 className="
@@ -187,9 +189,9 @@ export default function Footer() {
               grid-cols-2
               gap-x-12
               gap-y-4
-              text-sm
               md:grid-cols-1
               md:min-w-[180px]
+              lg:mt-8
             "
           >
             {links.map((link) => (
@@ -206,6 +208,7 @@ export default function Footer() {
                   transition-colors
                   duration-300
                   hover:text-white
+                  text-2xl
                 "
               >
                 <span>{link.label}</span>
@@ -277,9 +280,6 @@ export default function Footer() {
             © {year} Teddy. All rights reserved.
           </span>
 
-          <span>
-            Designed & built by Teddy
-          </span>
         </div>
       </div>
     </footer>
