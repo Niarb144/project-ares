@@ -20,6 +20,8 @@ export default function Navbar() {
 
   const navLinks = [
     { href: "/", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#services", label: "Services" },
     { href: "#projects", label: "Projects" },
     { href: "#skills", label: "Skills" },
     { href: "#contact", label: "Contact" },
@@ -376,7 +378,7 @@ export default function Navbar() {
                           items-center
                           justify-between
                           py-4
-                          md:py-5
+                          md:py-3
                         "
                       >
                         <span
@@ -389,7 +391,7 @@ export default function Navbar() {
                             duration-300
                             sm:text-2xl
                             md:text-3xl
-                            lg:text-4xl
+                            lg:text-3xl
 
                             ${
                               isActive
